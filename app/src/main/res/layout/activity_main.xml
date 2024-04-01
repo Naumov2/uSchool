@@ -30,7 +30,7 @@
         android:layout_marginTop="100dp"
         android:hint="Введите логин"
         android:textAlignment="center"
-        android:id="@+id/login"/>
+        android:id="@+id/login_txt"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,7 +49,8 @@
         android:background="@drawable/button"
         android:fontFamily="@font/bowler"
         android:textAlignment="center"
-        android:text="Войти"/>
+        android:text="Войти"
+        android:id="@+id/login_bt"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,6 +65,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Создать аккаунт"
-        android:layout_marginStart="123dp"/>
+        android:layout_marginStart="123dp"
+        android:id="@+id/create_account"/>
 
 </LinearLayout>
