@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "905355238419",
+    "firebase_url": "https://uschool-cadf8-default-rtdb.firebaseio.com",
+    "project_id": "uschool-cadf8",
+    "storage_bucket": "uschool-cadf8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905355238419:android:459bb08f61b5371b7833e6",
+        "android_client_info": {
+          "package_name": "com.example.uschool"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5G_O3ydQ2HIgCn4yLDoKoBOUObeb75IA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
