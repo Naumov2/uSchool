@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
 
     Button createAccount, login;
@@ -18,13 +20,10 @@ public class MainActivity extends AppCompatActivity {
         login = findViewById(R.id.login_bt);
         createAccount = findViewById(R.id.create_account);
 
-        createAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i;
-                i = new Intent(MainActivity.this, RegistrActivity.class);
-                startActivity(i);
-            }
-        });
+        if (FirebaseAuth.getInstance().getCurrentUser() == null)
+        {
+            startActivity(new Intent(MainActivity.this,RegistrActivity.class));
+
+        }
     }
 }
