@@ -18,10 +18,10 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainMenu"
+            android:name=".RegistrActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistrActivity"
+            android:name=".MainMenu"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

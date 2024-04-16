@@ -13,9 +13,9 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-//        if (FirebaseAuth.getInstance().getCurrentUser() == null)
-//        {
-//            startActivity(new Intent(MainMenu.this,LoginActivity.class));
-//        }
+        if (FirebaseAuth.getInstance().getCurrentUser() == null)
+        {
+            startActivity(new Intent(MainMenu.this,LoginActivity.class));
+        }
     }
 }
