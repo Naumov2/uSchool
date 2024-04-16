@@ -4,7 +4,7 @@
         <item>Ученик</item>
         <item>Администратор</item>
     </string-array>
-    <string-array name="class_">
+    <string-array name="number_class">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -22,4 +22,6 @@
         <item>Б</item>
         <item>В</item>
     </string-array>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
