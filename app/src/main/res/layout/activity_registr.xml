@@ -79,7 +79,8 @@
             android:layout_marginStart="16dp"
             android:hint="Ваша почта"
             android:textAlignment="center"
-            android:id="@+id/Email"/>
+            android:id="@+id/Email"
+            android:inputType="textEmailAddress"/>
         <EditText
             android:layout_marginStart="10dp"
             android:layout_width="180dp"
@@ -89,7 +90,8 @@
             android:layout_marginTop="10dp"
             android:hint="Придумайте пароль"
             android:textAlignment="center"
-            android:id="@+id/password"/>
+            android:id="@+id/password"
+            android:inputType="textPassword"/>
     </LinearLayout>
     <Spinner
         android:layout_width="match_parent"

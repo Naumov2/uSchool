@@ -1,5 +1,6 @@
 package com.example.uschool;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.uschool.databinding.ActivityRegistrBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -53,22 +57,32 @@ public class RegistrActivity extends AppCompatActivity {
                 {
                     Toast.makeText(getApplicationContext(),"Есть пустые поля", Toast.LENGTH_SHORT);
                 }else{
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(binding.Email.toString(),binding.password.toString());
-                    HashMap<String,String> userInfo = new HashMap<>();
-                    if(binding.function.toString() == "Администратор") {
-                        userInfo.put("email", binding.Email.toString());
-                        userInfo.put("username", binding.name.toString());
-                        userInfo.put("func", binding.function.toString());
-                    } else if (binding.function.toString() == "Ученик") {
-                        userInfo.put("email", binding.Email.toString());
-                        userInfo.put("username", binding.name.toString());
-                        userInfo.put("func", binding.function.toString());
-                        userInfo.put("parallel",binding.parallel.toString());
-                        userInfo.put("numberClass",binding.numberClass.toString());
-                    }
-                    FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .setValue(userInfo);
-                    startActivity(new Intent(RegistrActivity.this,MainMenu.class));
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(binding.Email.toString().trim(),binding.password.toString().trim())
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful())
+                                    {
+                                        HashMap<String,String> userInfo = new HashMap<>();
+                                        if(binding.function.toString() == "Администратор") {
+                                            userInfo.put("email", binding.Email.toString());
+                                            userInfo.put("username", binding.name.toString().toLowerCase());
+                                            userInfo.put("usersurname", binding.surname.toString().toLowerCase());
+                                            userInfo.put("func", binding.function.toString());
+                                        } else if (binding.function.toString() == "Ученик") {
+                                            userInfo.put("email", binding.Email.toString());
+                                            userInfo.put("username", binding.name.toString().toLowerCase());
+                                            userInfo.put("usersurname", binding.surname.toString().toLowerCase());
+                                            userInfo.put("func", binding.function.toString());
+                                            userInfo.put("parallel",binding.parallel.toString());
+                                            userInfo.put("numberClass",binding.numberClass.toString());
+                                        }
+                                        FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                .setValue(userInfo);
+                                        startActivity(new Intent(RegistrActivity.this,MainMenu.class));
+                                    }
+                                }
+                            });
                 }
             }
         });
