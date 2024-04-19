@@ -1,3 +1,4 @@
+
 package com.example.uschool;
 
 import androidx.annotation.NonNull;
@@ -5,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
@@ -53,38 +53,66 @@ public class RegistrActivity extends AppCompatActivity {
         binding.loginBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(binding.name.toString().isEmpty() || binding.surname.toString().isEmpty() || binding.Email.toString().isEmpty() || binding.password.toString().isEmpty())
-                {
-                    Toast.makeText(getApplicationContext(),"Есть пустые поля", Toast.LENGTH_SHORT);
-                }else{
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(binding.Email.toString().trim(),binding.password.toString().trim())
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if(task.isSuccessful())
-                                    {
-                                        HashMap<String,String> userInfo = new HashMap<>();
-                                        if(binding.function.toString() == "Администратор") {
-                                            userInfo.put("email", binding.Email.toString());
-                                            userInfo.put("username", binding.name.toString().toLowerCase());
-                                            userInfo.put("usersurname", binding.surname.toString().toLowerCase());
-                                            userInfo.put("func", binding.function.toString());
-                                        } else if (binding.function.toString() == "Ученик") {
-                                            userInfo.put("email", binding.Email.toString());
-                                            userInfo.put("username", binding.name.toString().toLowerCase());
-                                            userInfo.put("usersurname", binding.surname.toString().toLowerCase());
-                                            userInfo.put("func", binding.function.toString());
-                                            userInfo.put("parallel",binding.parallel.toString());
-                                            userInfo.put("numberClass",binding.numberClass.toString());
-                                        }
-                                        FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                                .setValue(userInfo);
-                                        startActivity(new Intent(RegistrActivity.this,MainMenu.class));
-                                    }
-                                }
-                            });
-                }
+                registerUser();
             }
         });
+    }
+    private void registerUser() {
+        String name = binding.name.getText().toString().trim();
+        String surname = binding.surname.getText().toString().trim();
+        String email = binding.Email.getText().toString().trim();
+        String password = binding.password.getText().toString().trim();
+        String function = binding.function.getSelectedItem().toString();
+        String numberClass = binding.numberClass.getSelectedItem().toString();
+        String parallel = binding.numberClass.getSelectedItem().toString();
+
+        // Проверка на пустоту полей
+        if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Заполните все поля", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Регистрация пользователя в Firebase
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Пользователь успешно зарегистрирован
+                            // Создание HashMap для хранения информации о пользователе
+                            HashMap<String, String> userInfo = new HashMap<>();
+                            userInfo.put("email", email);
+                            userInfo.put("username", name.toLowerCase());
+                            userInfo.put("usersurname", surname.toLowerCase());
+                            userInfo.put("func", function);
+
+                            // Если пользователь выбрал функцию "Ученик"
+                            if (function.equals("Ученик")) {
+                                userInfo.put("parallel", parallel);
+                                userInfo.put("numberClass", numberClass);
+                            }
+
+                            // Сохранение информации о пользователе в базе данных Firebase
+                            FirebaseDatabase.getInstance().getReference().child("Users")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(userInfo)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                // Переход на главный экран после успешной регистрации
+                                                startActivity(new Intent(RegistrActivity.this, MainMenu.class));
+                                                finish();
+                                            } else {
+                                                Toast.makeText(RegistrActivity.this, "Ошибка регистрации пользователя", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        } else {
+                            // Ошибка при регистрации пользователя
+                            Toast.makeText(RegistrActivity.this, "Ошибка: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }
