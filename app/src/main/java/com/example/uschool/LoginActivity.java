@@ -27,11 +27,11 @@ public class LoginActivity extends AppCompatActivity {
         binding.loginBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.loginBt.getText().toString().isEmpty() || binding.password.getText().toString().isEmpty())
+                if (binding.loginTxt.getText().toString().isEmpty() || binding.password.getText().toString().isEmpty())
                 {
-                    Toast.makeText(getApplicationContext(),"Есть пустые поля", Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(),"Есть пустые поля", Toast.LENGTH_SHORT).show();
                 }else{
-                    FirebaseAuth.getInstance().signInWithEmailAndPassword(binding.loginBt.getText().toString(),binding.password.getText().toString())
+                    FirebaseAuth.getInstance().signInWithEmailAndPassword(binding.loginTxt.getText().toString(),binding.password.getText().toString())
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {

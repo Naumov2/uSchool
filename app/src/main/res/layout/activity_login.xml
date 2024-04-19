@@ -30,7 +30,8 @@
         android:layout_marginTop="100dp"
         android:hint="Введите логин"
         android:textAlignment="center"
-        android:id="@+id/login_txt"/>
+        android:id="@+id/login_txt"
+        android:inputType="textEmailAddress"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,6 +39,7 @@
         android:fontFamily="@font/bowler"
         android:layout_marginTop="10dp"
         android:hint="Введите пароль"
+        android:inputType="textPassword"
         android:textAlignment="center"
         android:id="@+id/password"/>
 
