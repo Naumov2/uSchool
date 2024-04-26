@@ -13,12 +13,17 @@
         android:layout_height="wrap_content"
         android:text="Android Knowledge"
         android:textColor="@color/white"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:id="@+id/Email_header"
+        android:fontFamily="@font/bowler"
+        android:textSize="11dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="contact@androidknowledge.com"
+        android:id="@+id/Email_fragment"
         android:textColor="@color/white"
-        android:textSize="14sp"
-        android:layout_marginBottom="16dp"/>
+        android:textSize="11dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/bowler" />
 </LinearLayout>
