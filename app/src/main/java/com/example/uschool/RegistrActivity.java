@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
@@ -111,6 +112,7 @@ public class RegistrActivity extends AppCompatActivity {
                         } else {
                             // Ошибка при регистрации пользователя
                             Toast.makeText(RegistrActivity.this, "Ошибка: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.e("ddd","Ошибка: " + task.getException().getMessage());
                         }
                     }
                 });
