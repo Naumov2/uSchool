@@ -64,7 +64,7 @@ public class RegistrActivity extends AppCompatActivity {
         String password = binding.password.getText().toString().trim();
         String function = binding.function.getSelectedItem().toString();
         String numberClass = binding.numberClass.getSelectedItem().toString();
-        String parallel = binding.numberClass.getSelectedItem().toString();
+        String parallel = binding.parallel.getSelectedItem().toString();
 
         // Проверка на пустоту полей
         if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || password.isEmpty()) {

@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -26,7 +27,7 @@ import org.w3c.dom.Text;
 public class MainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
     TextView Email_tv, name_tv, secondName_tv;
-    String Email, username, usersurname, func;
+    public static String Email, username, usersurname, func;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,29 +36,33 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         {
             startActivity(new Intent(MainMenu.this,LoginActivity.class));
         }
-//        FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                Email = snapshot.child("email").getValue().toString();
-//                username = snapshot.child("username").getValue().toString();
-//                usersurname = snapshot.child("usersurname").getValue().toString();
-//                func = snapshot.child("func").getValue().toString();
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View navHeader = navigationView.getHeaderView(0);
         TextView twNavBarName = (TextView) navHeader.findViewById(R.id.Email_header);
-        twNavBarName.setText("automatik");
-        Email_tv = getLayoutInflater().inflate(R.layout.nav_header,null).findViewById(R.id.Email_header);
-        Email_tv.setText("ilyanaumov387@gmail.com");
+        Email_tv = (TextView) navHeader.findViewById(R.id.Email_fragment);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Email = snapshot.child("email").getValue().toString();
+                    username = snapshot.child("username").getValue().toString();
+                    usersurname = snapshot.child("usersurname").getValue().toString();
+                    func = snapshot.child("func").getValue().toString();
+                    Email_tv.setText(Email);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
-        //NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav,
                 R.string.close_nav);
