@@ -26,8 +26,13 @@ import org.w3c.dom.Text;
 
 public class MainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
+<<<<<<< HEAD
     TextView Email_tv, name_tv, secondName_tv;
     public static String Email, username, usersurname, func;
+=======
+    TextView Email_tv, name_tv, func_tv;
+    String Email, username, usersurname, func;
+>>>>>>> a19749c54f95d2dea5daf278b78881224a69d449
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +41,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         {
             startActivity(new Intent(MainMenu.this,LoginActivity.class));
         }
+<<<<<<< HEAD
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View navHeader = navigationView.getHeaderView(0);
@@ -44,6 +50,13 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
+=======
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View navHeader = navigationView.getHeaderView(0);
+        Email_tv = (TextView) navHeader.findViewById(R.id.Email_header);
+        name_tv = (TextView) navHeader.findViewById(R.id.name_header);
+        func_tv = (TextView) navHeader.findViewById(R.id.func_header);
+>>>>>>> a19749c54f95d2dea5daf278b78881224a69d449
             FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -52,6 +65,12 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
                     usersurname = snapshot.child("usersurname").getValue().toString();
                     func = snapshot.child("func").getValue().toString();
                     Email_tv.setText(Email);
+<<<<<<< HEAD
+=======
+                    name_tv.setText(username + " " + usersurname);
+                    func_tv.setText(func);
+
+>>>>>>> a19749c54f95d2dea5daf278b78881224a69d449
                 }
 
                 @Override
@@ -59,7 +78,10 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
 
                 }
             });
+<<<<<<< HEAD
         }
+=======
+>>>>>>> a19749c54f95d2dea5daf278b78881224a69d449
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
