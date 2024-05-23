@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EatAddActivity"
+    android:orientation="vertical"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Первое:"
+            android:fontFamily="@font/bowler"
+            android:textSize="40dp"
+            android:textColor="@color/lavender"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Введите блюдо"
+            android:textColor="@color/lavender"
+            android:textColorHint="@color/lavender"
+            android:fontFamily="@font/bowler"
+            android:id="@+id/first"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Второе:"
+            android:fontFamily="@font/bowler"
+            android:textSize="40dp"
+            android:textColor="@color/lavender"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Введите блюдо"
+            android:textColor="@color/lavender"
+            android:textColorHint="@color/lavender"
+            android:fontFamily="@font/bowler"
+            android:id="@+id/second"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Напиток:"
+            android:fontFamily="@font/bowler"
+            android:textSize="40dp"
+            android:textColor="@color/lavender"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Введите напиток"
+            android:textColor="@color/lavender"
+            android:textColorHint="@color/lavender"
+            android:fontFamily="@font/bowler"
+            android:id="@+id/drink"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Десерт:"
+            android:fontFamily="@font/bowler"
+            android:textSize="40dp"
+            android:textColor="@color/lavender"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Введите напиток"
+            android:textColor="@color/lavender"
+            android:textColorHint="@color/lavender"
+            android:fontFamily="@font/bowler"
+            android:id="@+id/candy"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Добавить меню"
+        android:fontFamily="@font/bowler"
+        android:id="@+id/addEat"/>
+
+</LinearLayout>

@@ -1,16 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".HomeFragment"
+    android:background="@color/black"
+    android:orientation="vertical">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home Fragment"
+        android:text="Администратор"
         android:textSize="30sp"
         android:layout_centerInParent="true"
-        android:textColor="@color/lavender"/>
-</RelativeLayout>
+        android:textColor="@color/lavender"
+        android:fontFamily="@font/bowler"
+        android:textAlignment="center"
+        android:paddingLeft="50dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:text="Расписание"
+        android:textSize="22dp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/lavender"
+        android:fontFamily="@font/bowler"
+        android:textAlignment="center"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Добавить расписание"
+        android:textSize="10dp"
+        android:id="@+id/add"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выставить оценки"
+        android:textSize="22dp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/lavender"
+        android:fontFamily="@font/bowler"
+        android:textAlignment="center"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выставить оценки"
+        android:textSize="10dp"
+        android:id="@+id/marks"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Столовая"
+        android:textSize="22dp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/lavender"
+        android:fontFamily="@font/bowler"
+        android:textAlignment="center"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Добавить меню на день"
+        android:textSize="10dp"
+        android:id="@+id/eat"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Обьявления"
+        android:textSize="22dp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/lavender"
+        android:fontFamily="@font/bowler"
+        android:textAlignment="center"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Добавить обьявление"
+        android:textSize="10dp"
+        android:id="@+id/announcements"/>
+</LinearLayout>

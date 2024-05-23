@@ -1,18 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsFragment">
+    tools:context=".SettingsFragment"
+    android:background="@color/black"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings Fragment"
+        android:text="Меню в столовой"
         android:textSize="30sp"
         android:layout_centerInParent="true"
-        android:textColor="@color/lavender"/>
+        android:textColor="@color/lavender"
+        android:fontFamily="@font/bowler"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Первое"
+        android:textSize="30sp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/lavender"
+        android:id="@+id/first"
+        android:fontFamily="@font/bowler"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Второе"
+        android:textSize="30sp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/lavender"
+        android:id="@+id/second"
+        android:fontFamily="@font/bowler"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Напиток"
+        android:textSize="30sp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/lavender"
+        android:id="@+id/drink"
+        android:fontFamily="@font/bowler"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Десерт"
+        android:textSize="30sp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/lavender"
+        android:id="@+id/candy"
+        android:fontFamily="@font/bowler"/>
 
-</RelativeLayout>
+</LinearLayout>

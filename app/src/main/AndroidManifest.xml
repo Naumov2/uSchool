@@ -15,6 +15,30 @@
         android:theme="@style/Theme.NavigationDrawer"
         tools:targetApi="31">
         <activity
+            android:name=".AnnouncementsAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EatAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MarksStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MarksID"
+            android:exported="false" />
+        <activity
+            android:name=".MarksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Marks"
+            android:exported="false" />
+        <activity
+            android:name=".SchStudent"
+            android:exported="false" />
+        <activity
+            android:name=".AddSch"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
@@ -22,8 +46,8 @@
             android:exported="false" />
         <activity
             android:name=".MainMenu"
-            android:theme="@style/Theme.Design.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -84,7 +84,10 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            android.os.Process.killProcess(android.os.Process.myPid());
+            Intent i = new Intent(Intent.ACTION_MAIN);
+            i.addCategory(Intent.CATEGORY_HOME);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
         }
         if(item.getItemId() == R.id.nav_logout_acc){
             FirebaseAuth.getInstance().signOut();
